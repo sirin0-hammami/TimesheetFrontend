@@ -1,0 +1,72 @@
+<div class="table-responsive">
+  <app-modals></app-modals>
+  <br/> 
+  <div class="main-card mb-3 card">
+    <div class="card-header">
+      <div class="table_title">Taches</div>
+    </div>
+    <table class="align-middle mb-0 table table-borderless table-striped table-hover">
+      <thead>
+        <tr>
+          <th class="text-center" scope="col">Projets</th>
+          <th class="text-center" scope="col">Tache</th>
+          <th class="text-center" scope="col">Date de début</th>
+          <th class="text-center" scope="col">Date de fin</th>
+          <th class="text-center" scope="col"> Actions </th>
+          <th class="text-center" scope="col"> Etat </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let task of tasks | slice: (page-1) * PageSize : page * PageSize; index as i ">
+          <th class="text-center" scope="row">{{ i + 1 }}</th>
+          <td class="text-center">
+            <div class="widget-content-wrapper">
+              <div class="widget-content-right widget-content-actions">
+                {{ task.descriptionTache }}
+                <div class="d-inline-block" ngbDropdown placement="bottom-right">
+                  <button class="btn btn-icon btn-icon-only btn-link" ngbDropdownToggle>
+                    <i class="pe-7s-menu btn-icon-wrapper"></i>
+                  </button>
+                  <div ngbDropdownMenu>
+                    <ul class="nav flex-column">
+                      <li> des remarques des remarques des remarques</li>
+                      <li> des remarques des remarques des remarques</li>
+                      <li> des remarques des remarques des remarques</li>
+                      <Li class="nav-item-btn nav-item">
+                        <button class="btn-wide  btn btn-succes btn-sm">Ajouter Rq</button>
+                      </Li>
+                      <li class="nav-item-btn nav-item">
+                        <button class="btn-wide btn-shadow btn btn-danger btn-sm">Fermer</button>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td class="text-center">{{ task.dateDepT }}</td>
+          <td class="text-center">{{ task.dateFinT | number }}</td>
+          <td class="text-center">
+            <div class="widget-content-right widget-content-actions">
+              <button class="border-0 btn-transition btn btn-outline-success">
+                <fa-icon [icon]="faCheck"></fa-icon>
+              </button>
+              <button class="border-0 btn-transition btn btn-outline-danger">
+                <fa-icon [icon]="faTrash"></fa-icon>
+              </button>
+              <button class="border-0 btn-transition btn btn-outline-primary">
+                <fa-icon [icon]="faPen"></fa-icon>
+              </button>
+            </div>
+          </td>
+          <td class="text-center">
+            <div class="badge bg-info">On Hold</div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="d-block text-center card-footer">
+      <ngb-pagination class="d-flex justify-content-center" [collectionSize]="70" [(page)]="page"></ngb-pagination>
+    </div>
+  </div>
+</div>
