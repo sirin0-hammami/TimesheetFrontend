@@ -1,0 +1,5 @@
+<img [attr.src]="imageToShow" class="avatar-md rounded-circle img-thumbnail" *ngIf="check">
+<div class="avatar mr-10" *ngIf="!(check)">
+    <span class="avatar-text avatar-text-dark rounded-circle "><span class="initial-wrap"><span>{{name}}</span></span>
+    </span>
+</div>

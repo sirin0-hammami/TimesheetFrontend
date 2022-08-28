@@ -1,26 +1,27 @@
 import { TachesComponent } from './Pages/User-Interface/Taches/taches.component';
-import {NgModule} from '@angular/core';
-import {Routes, RouterModule} from '@angular/router';
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
 
-import {BaseLayoutComponent} from './Layout/base-layout/base-layout.component';
-import {PagesLayoutComponent} from './Layout/pages-layout/pages-layout.component';
+import { BaseLayoutComponent } from './Layout/base-layout/base-layout.component';
+import { PagesLayoutComponent } from './Layout/pages-layout/pages-layout.component';
 
 // DEMO PAGES
 
 // Dashboards
 
-import {AnalyticsComponent} from './TemplateComponents/Dashboards/analytics/analytics.component';
+import { AnalyticsComponent } from './TemplateComponents/Dashboards/analytics/analytics.component';
 
 // Pages
 
-import {ForgotPasswordBoxedComponent} from './TemplateComponents/UserPages/forgot-password-boxed/forgot-password-boxed.component';
-import {LoginBoxedComponent} from './Pages/login-boxed/login-boxed.component';
+import { ForgotPasswordBoxedComponent } from './TemplateComponents/UserPages/forgot-password-boxed/forgot-password-boxed.component';
+import { LoginBoxedComponent } from './Pages/login-boxed/login-boxed.component';
+import { UsersComponent } from './Pages/admin-interface/users/users.component';
 
 
 
 const routes: Routes = [
   {
-    path:'',
+    path: '',
     component: LoginBoxedComponent
   },
   {
@@ -30,9 +31,11 @@ const routes: Routes = [
 
       // Dashboads
 
-      {path: 'dashboard', component: AnalyticsComponent, data: {extraParameter: ''}},
+      { path: 'dashboard', component: AnalyticsComponent, data: { extraParameter: '' } },
 
-      {path: 'taches', component: TachesComponent, data: {extraParameter: ''}},
+      { path: 'taches', component: TachesComponent, data: { extraParameter: '' } },
+
+      { path: 'users', component: UsersComponent, data: { extraParameter: '' } },
 
     ]
 
@@ -44,19 +47,19 @@ const routes: Routes = [
 
       // User Pages
 
-      {path: 'pages/forgot-password-boxed', component: ForgotPasswordBoxedComponent, data: {extraParameter: ''}},
+      { path: 'pages/forgot-password-boxed', component: ForgotPasswordBoxedComponent, data: { extraParameter: '' } },
     ]
   },
-  {path: '**', redirectTo: 'dashboard'}
+  { path: '**', redirectTo: 'dashboard' }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes,
     {
-    scrollPositionRestoration: 'enabled',
-    anchorScrolling: 'enabled',
-    relativeLinkResolution: 'legacy'
-})],
+      scrollPositionRestoration: 'enabled',
+      anchorScrolling: 'enabled',
+      relativeLinkResolution: 'legacy'
+    })],
   exports: [RouterModule]
 })
 export class AppRoutingModule {
